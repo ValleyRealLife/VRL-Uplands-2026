@@ -1,0 +1,152 @@
+<%@ Master Language="C#" AutoEventWireup="true" Inherits="Rock.Web.UI.RockMasterPage" %>
+<%@ Import Namespace="System.Web.Optimization" %>
+<%@ Import Namespace="Rock" %>
+<%@ Import Namespace="Rock.Web" %>
+<%@ Import Namespace="Rock.Web.UI" %>
+<%@ Import Namespace="Rock.Model" %>
+<%@ Import Namespace="Rock.Attribute" %>
+
+<!DOCTYPE html>
+
+<script runat="server">
+
+    // keep code below to call base class init method
+
+    /// <summary>
+    /// Raises the <see cref="E:System.Web.UI.Control.Init" /> event.
+    /// </summary>
+    /// <param name="e">An <see cref="T:System.EventArgs" /> object that contains the event data.</param>
+    protected override void OnInit( EventArgs e )
+    {
+        base.OnInit( e );
+    }
+
+</script>
+
+<html >
+<head runat="server">
+
+    <meta charset="utf-8">
+    <title></title>
+
+    <script src="<%# System.Web.Optimization.Scripts.Url("~/Scripts/Bundles/RockJQueryLatest" ) %>"></script>
+
+    <!-- Set the viewport width to device width for mobile -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <asp:ContentPlaceHolder ID="css" runat="server" />
+
+	<!-- Included CSS Files -->
+    <link rel="stylesheet" href="<%# ResolveRockUrl("~~/Styles/bootstrap.css", true) %>"/>
+	<link rel="stylesheet" href="<%# ResolveRockUrl("~~/Styles/theme.css", true) %>"/>
+
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+
+    <style>
+        #vrl-top-alert {
+            background-color: black;
+            width: 100%;
+            display:none;
+        }
+        .popupbanner-content {
+            color: white;
+            min-height: 75px;
+            display:flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .popupbanner-content p {
+            display: inline-block;
+            margin-bottom: 0;
+            padding: 15px 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body runat="server" id="body">
+
+    <form id="form1" runat="server">
+
+        <!-- Page Header -->
+        <header>
+            
+            <div id="vrl-top-alert">
+                    <Rock:Zone Name="Popup" runat="server" />
+            </div>
+
+            <nav style="display:flex;justify-content:space-between;">
+                <Rock:Zone Name="Navigation" runat="server" />
+                <Rock:Zone Name="Login" runat="server" />
+            </nav>
+        </header>
+
+    
+
+        <asp:ContentPlaceHolder ID="main" runat="server"></asp:ContentPlaceHolder>
+
+	    <footer>
+            
+			<Rock:Zone Name="Footer" runat="server" />
+
+	    </footer>
+
+        <%-- controls for scriptmanager and update panel --%>
+        <asp:ScriptManager ID="sManager" runat="server"/>
+        <asp:UpdateProgress id="updateProgress" runat="server" DisplayAfter="800">
+		        <ProgressTemplate>
+		            <div class="updateprogress-status">
+                        <div class="spinner">
+                          <div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div>
+                        </div>
+                    </div>
+                    <div class="updateprogress-bg modal-backdrop"></div>
+		        </ProgressTemplate>
+        </asp:UpdateProgress>
+
+    </form>
+
+    <script>
+        Sys.Application.add_load(HandleBackForwardCache);
+
+        // Fixes an issue with the wait spinner caused by browser Back/Forward caching.
+        function HandleBackForwardCache() {
+
+            // Forcibly hide the wait spinner if the page is being reloaded from cache.
+            // Browsers that implement back/forward caching may otherwise continue to display the wait spinner when the page is restored.
+            // This fix is not effective for Safari browsers prior to v13, due to a known bug in the bfcache implementation.
+            // (https://bugs.webkit.org/show_bug.cgi?id=156356)
+            $(window).bind('pageshow', function (e) {
+                if ( e.originalEvent.persisted )
+                {
+                    $('#updateProgress').hide();
+                }
+            });
+        }
+    </script>
+    <script>
+        // Controls the display of the popup banner and saves in the browser session.
+        // Get references to the banner and dismiss button
+        const banner = document.querySelector('#vrl-top-alert');
+        const dismissButton = document.querySelector('#banner-dismiss-button');
+
+        // Check if the banner has been dismissed in this session
+        const isDismissed = sessionStorage.getItem('bannerDismissed');
+
+        if (!isDismissed) {
+            // If not dismissed, show the banner
+            banner.style.display = 'block';
+
+            // Add event listener to the dismiss button
+            dismissButton.addEventListener('click', () => {
+                // Hide the banner
+                banner.style.display = 'none';
+
+                // Store the dismissal state in localStorage
+                sessionStorage.setItem('bannerDismissed', 'true');
+            });
+        }
+    </script>
+
+</body>
+
+</html>

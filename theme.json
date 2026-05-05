@@ -1,0 +1,72 @@
+{
+    "$schema": "https://community.rockrms.com/schema/2024-10-01/theme.schema.json",
+    "name": "VRL NextGen",
+    "description": "VRL NextGen Theme for public facing website.",
+    "purpose": "web",
+    "availableIconSets": ["fontawesome", "tabler"],
+    "fields": [
+        {
+            "type":"panel",
+            "title":"Base Theme",
+            "expanded": true,
+            "fields": [
+                {
+                    "type": "color",
+                    "name": "Primary Color",
+                    "variable": "base-primary",
+                    "description": "The primary color.",
+                    "default": "#005DD7"
+                },
+                {
+                    "type": "image",
+                    "name": "Site Logo",
+                    "variable": "logo-image",
+                    "description": "The logo that will be displayed throughout the site.",
+                    "default": "~~/Assets/Images/logo.svg"
+                }
+            ]
+        },
+        {
+            "type":"panel",
+            "title":"Application Colors",
+            "expanded": false,
+            "fields": [
+                {
+                    "type": "color",
+                    "name": "Link Color",
+                    "variable": "base-link",
+                    "description": "The link color.",
+                    "default": "#006DCC"
+                },
+                {
+                    "type": "color",
+                    "name": "Secondary Color",
+                    "variable": "base-secondary",
+                    "description": "The secondary color.",
+                    "default": "#6c757d"
+                }
+            ]
+        },
+        {
+            "type": "panel",
+            "title": "Typography",
+            "expanded": false,
+            "fields": [
+                {
+                    "type": "literal",
+                    "name": "Title Font Family",
+                    "variable": "font-family-title",
+                    "description": "The font family for headings.",
+                    "default": "-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif"
+                },
+                {
+                    "type": "literal",
+                    "name": "Body Font Family",
+                    "variable": "font-family-body",
+                    "description": "The font family for body text.",
+                    "default": "-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif"
+                }
+            ]
+        }
+    ]
+}

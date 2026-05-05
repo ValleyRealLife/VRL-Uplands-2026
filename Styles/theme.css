@@ -1,0 +1,18 @@
+@charset "UTF-8";
+/* CSS Overrides Top Start */
+@import url('/Styles/styles-v2/icons/fontawesome-icon.css?v=4232385967');
+@import url('/Styles/styles-v2/icons/fontawesome-solid.css?v=4137481333');
+@import url('/Styles/styles-v2/icons/tabler-icon.css?v=225734114');
+/* CSS Overrides Top End */
+
+
+/* CSS Overrides Bottom Start */
+:root {
+    --base-primary: #005DD7;
+    --logo-image: url('/Themes/VRL Uplands 2026/Assets/Images/logo.svg');
+    --base-link: #006DCC;
+    --base-secondary: #6c757d;
+    --font-family-title: -apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+    --font-family-body: -apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+}
+/* CSS Overrides Bottom End */
