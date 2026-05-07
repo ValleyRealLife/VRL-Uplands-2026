@@ -1,2 +1,19 @@
+/* NextGen Theme Entry Point
+    These imports are required for the Rock compiler to correctly 
+    process this file into theme.css
+*/
+@import "../../../Styles/styles-v2/sass-variable";
+@import "../../../Styles/styles-v2/core";
+@import "Components/vrl-cards";
+
+/* Your rudimentary styles will now be appended to the compiled output */
 img { max-width: 100%; }
-p { font-size: 1rem; }
+p { 
+    font-size: 1rem; 
+    
+    .spacer {
+        font-size:1.5ch;
+    }
+}
+
+/* This is a comment */
