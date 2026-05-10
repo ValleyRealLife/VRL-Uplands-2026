@@ -5,3 +5,14 @@ This is the working theme for Q4 release of Valley Real Life's RockRMS theme. Si
 ## Folder structure and includes
 
 The VRL theme will be written with native uncompiled CSS with a base import and linked on it's own.
+
+## Commenting
+I'm using the vscode extension "colorful comments" which use the following syntax.
+
+* "*" Normal, green
+* "?" Question, blue
+* "!" Warning, red
+* "^" Info, highlight yellow
+* "todo" WIP, highlight orange
+* "~" _____, highlight purple
+* "&" _____, highlight pink
