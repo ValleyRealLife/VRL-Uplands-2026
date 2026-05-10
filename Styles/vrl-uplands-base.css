@@ -1,0 +1,16 @@
+/** -- -- vrl-uplands-base.css -- -- -- -- -- -- **/
+/**                                              **/
+/** VRL base theme file brings in any resets.    **/
+/** components, and general styling via import   **/
+/** to maintain ease of editing. Each theme      **/
+/** should be set up with a header like this.    **/
+/**                                              **/
+/** -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- **/
+
+
+@import 'vrl-normalize.css';                  /* -- Not created -                  -- */
+@import 'vrl-base.css';                       /* -- Not created -                  -- */
+@import 'vrl-layouts.css';                    /* -- Not created -                  -- */
+@import 'components/vrl-sermons.css';         /* -- Not created -                  -- */
+@import 'components/vrl-events.css';          /* -- Not created -                  -- */
+@import 'components/vrl-headers.css';         /* -- Not created -                  -- */
